@@ -5,17 +5,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
-@RestController
-@RequestMapping("/addTwoNo1")
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+@Controller
 public class AddTwoNo1Controller {
- @Autowired
- private AddTwoNo1Service addTwoNo1Service;
- private String AddTwoNo1Controller(){
-	 return "/addTwoNo1";
- }
- @PostMapping("/add")
- public Map<String, Integer> addNumbers(@RequestBody Map<String, Integer> numbers) throws Exception {
-	  Map<String, Integer> result = addTwoNo1Service.add(numbers);
-     return result;
- }
+    @Autowired
+    private AddTwoNo1Service addTwoNo1Service;
+    
+    @GetMapping("/addTwoNo1")
+    private ModelAndView addTwoNo1() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("add");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+    
+    @PostMapping("/add")
+    public Map<String, Integer> addNumbers(@RequestBody Map<String, String> numbers) throws Exception {
+        Map<String, Integer> intNumbers = new HashMap<>();
+        intNumbers.put("num1", Integer.parseInt(numbers.get("num1")));
+        intNumbers.put("num2", Integer.parseInt(numbers.get("num2")));
+        Map<String, Integer> result = addTwoNo1Service.add(intNumbers);
+        return result;
+    }
 }

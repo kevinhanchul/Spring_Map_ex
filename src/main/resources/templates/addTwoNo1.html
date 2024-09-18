@@ -11,10 +11,10 @@
 <form id="addForm">
 <table id="tabId">
 <tr>
-<td key="1">첫번째</td>
+<td>첫번째</td>
 <td>두번째</td>
 </tr>
-<tr key="2">
+<tr data-key="2">
 <td>1</td>
 <td>2</td>
 </tr>
@@ -24,24 +24,23 @@
 <h2>Result: <span id="result"></span></h2>
 <script>
 function fn_abc() {
-  	  event.preventDefault();
-     var num = {
-	      num1: $("#tabId tr[key='2'] > td").eq(0).text(),   	
-	      num2: $("#tabId tr[key='2'] > td").eq(1).text()
-     };
+    var num = {
+        num1: $("#tabId tr[data-key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[data-key='2'] > td").eq(1).text()
+    };
 	  
-     $.ajax({
-         url: "/addTwoNo1/add",
-         type: "POST",
-         contentType: "application/json",
-         data: JSON.stringify(num),
-         success: function(result) {
-             $("#result").text(result.c);
-         },
-         error: function(error) {
-             alert("Error: " + error.responseText);
-         }
-     });
+    $.ajax({
+        url: "/add",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.sumNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
 }
 </script>
 </body>
