@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 @Service
-public class CalculationService {
+public class AddTwoNo1Service {
  public Map<String, Integer> add(Map<String, Integer> numberMap) throws Exception {
 	  int num[]= {0,0,0,0,0};
 	  int sumNo=0, cnt=0, i=0;
