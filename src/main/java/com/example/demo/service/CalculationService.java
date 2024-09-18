@@ -21,4 +21,17 @@ public class CalculationService {
      numberMap.put("cnt", cnt);
      return numberMap;
  }
+ 
+ public Map<String, Integer> findBigNo(Map<String, Integer> numberMap) throws Exception {
+	int firNo, secNo, bigNo=0;
+    firNo = numberMap.get("num1");
+    secNo = numberMap.get("num2");
+    if(firNo>secNo) {
+    	bigNo=firNo;
+    }
+    else bigNo=secNo;
+    numberMap.put("bigNo", bigNo);
+    return numberMap;
+}
+ 
 }

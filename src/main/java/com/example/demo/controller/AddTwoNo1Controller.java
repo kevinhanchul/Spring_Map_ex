@@ -15,12 +15,22 @@ public class AddTwoNo1Controller {
     @GetMapping("/addTwoNo1")
     private ModelAndView addTwoNo1() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("add");
+        mav.setViewName("addTwoNo1");
         mav.addObject("message", "Hello, abc.html!");
         return mav;
     }
     
-    @PostMapping("/add")
+    @GetMapping("/findBigNo")
+    private ModelAndView findBigNo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("findBigNo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+    
+    
+    
+    @PostMapping("/add2")
     public Map<String, Integer> addNumbers(@RequestBody Map<String, String> numbers) throws Exception {
         Map<String, Integer> intNumbers = new HashMap<>();
         intNumbers.put("num1", Integer.parseInt(numbers.get("num1")));
