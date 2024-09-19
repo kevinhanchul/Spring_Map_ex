@@ -28,7 +28,21 @@ public class AddTwoNo1Controller {
         return mav;
     }
     
+    @GetMapping("/findSumNo")
+    private ModelAndView findSumNo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("findSumNo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
     
+    @GetMapping("/findOddNo")
+    private ModelAndView findOddNo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("findOddNo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
     
     @PostMapping("/add2")
     public Map<String, Integer> addNumbers(@RequestBody Map<String, String> numbers) throws Exception {

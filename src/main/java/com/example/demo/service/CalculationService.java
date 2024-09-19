@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 @Service
 public class CalculationService {
+	
  public Map<String, Integer> add(Map<String, Integer> numberMap) throws Exception {
 	  int num[]= {0,0,0,0,0};
 	  int sumNo=0, cnt=0, i=0;
@@ -32,6 +33,43 @@ public class CalculationService {
     else bigNo=secNo;
     numberMap.put("bigNo", bigNo);
     return numberMap;
+ }
+ 
+ public Map<String, Integer> findOddNo(Map<String, Integer> numberMap) throws Exception {
+		int chkNo, oddNo=0;
+		chkNo = numberMap.get("num1");
+	    if(chkNo%2==0) {
+	    	oddNo=0;
+	    }
+	    else oddNo=1;
+	    numberMap.put("oddNo", oddNo);
+	    return numberMap;
+ }
+ 
+ public Map<String, Integer> findSumNo(Map<String, Integer> numberMap) throws Exception {
+		int chkNo, oddNo=0;
+		chkNo = numberMap.get("num1");
+		
+	    if(chkNo%2==0) {
+	    	oddNo=0;
+	    }
+	    
+	    else oddNo=1;
+	    numberMap.put("oddNo", oddNo);
+	    return numberMap;
+}
+ 
+ public Map<String, Integer> findRackGame(Map<String, Integer> numberMap) throws Exception {
+		int chkNo, oddNo=0;
+		chkNo = numberMap.get("num1");
+		
+	    if(chkNo%2==0) {
+	    	oddNo=0;
+	    }
+	    
+	    else oddNo=1;
+	    numberMap.put("oddNo", oddNo);
+	    return numberMap;
 }
  
 }

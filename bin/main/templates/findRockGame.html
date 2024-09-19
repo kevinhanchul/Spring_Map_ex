@@ -11,10 +11,12 @@
 <form id="addForm">
 <table id="tabId">
 <tr>
-<td>숫자</td>
+<td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
+<td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
 </tr>
 <tr key="2">
-<td>3</td>
+<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
 </tr>
 </table>
 <button type="button" onclick="fn_abc()">나의층수로</button>
@@ -24,10 +26,19 @@
 function fn_abc() {
     var num = {
         num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
     };
 	  
     $.ajax({
-        url: "/api/findOddNo",
+        url: "/api/findRockGame",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),

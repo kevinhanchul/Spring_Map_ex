@@ -9,13 +9,22 @@ import java.util.HashMap;
 import java.util.Map;
 @RestController
 @RequestMapping("/api")
-public class FindBigNoController {
+public class FindRackGameController {
  @Autowired
  private CalculationService calculationService;
  
- @PostMapping("/findBigNo")
+ @PostMapping("/findOddNo")
  public Map<String, Integer> addNumbers(@RequestBody Map<String, Integer> numbers) throws Exception {
-	  Map<String, Integer> result = calculationService.findBigNo(numbers);
+	  Map<String, Integer> result = calculationService.findOddNo(numbers);
      return result;
  }
+ 
+ @PostMapping("/findSumNo")
+ public Map<String, Integer> findSumNo(@RequestBody Map<String, Integer> numbers) throws Exception {
+	  Map<String, Integer> result = calculationService.findSumNo(numbers);
+     return result;
+ }
+ 
 }
+
+
