@@ -1,6 +1,6 @@
 
 package com.example.demo.controller;
-import com.example.demo.service.CalculationService;
+import com.example.demo.service.FindRackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,20 +10,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class FindRackGameController {
- @Autowired
- private CalculationService calculationService;
- 
- @PostMapping("/findOddNo")
- public Map<String, Integer> findOddNo(@RequestBody Map<String, Integer> numbers) throws Exception {
-	  Map<String, Integer> result = calculationService.findOddNo(numbers);
-     return result;
- }
- 
- @PostMapping("/findSumNo")
- public Map<String, Integer> findSumNo(@RequestBody Map<String, Integer> numbers) throws Exception {
-	  Map<String, Integer> result = calculationService.findSumNo(numbers);
-     return result;
- }
+	 @Autowired
+	 private FindRackService findRackService;
+	 
+	 @PostMapping("/findRockGame")
+	 public Map<String, Object> findRockGame(@RequestBody Map<String, Object> numbers) throws Exception {
+		 Map<String, Object> result = findRackService.findRockGame(numbers);
+	 return result;
+	 }
  
 }
 

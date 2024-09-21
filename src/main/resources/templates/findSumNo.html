@@ -5,9 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add Numbers</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
 </head>
 <body>
-<h1>Add Two Numbers</h1>
+<h4>Add Two Numbers</h4>
 <form id="addForm">
 <table id="tabId">
 <tr>
@@ -38,12 +44,12 @@ function fn_abc() {
     };
 	  
     $.ajax({
-        url: "/api/findOddNo",
+        url: "/api/findSumNo",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),
         success: function(result) {
-            $("#result").text(result.oddNo);
+            $("#result").text(result.sumNo);
         },
         error: function(error) {
             alert("Error: " + error.responseText);

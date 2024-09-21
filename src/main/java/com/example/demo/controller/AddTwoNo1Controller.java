@@ -44,6 +44,14 @@ public class AddTwoNo1Controller {
         return mav;
     }
     
+    @GetMapping("/findRockGame")
+    private ModelAndView findRockGame() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("findRockGame");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+    
     @PostMapping("/add2")
     public Map<String, Integer> addNumbers(@RequestBody Map<String, String> numbers) throws Exception {
         Map<String, Integer> intNumbers = new HashMap<>();
