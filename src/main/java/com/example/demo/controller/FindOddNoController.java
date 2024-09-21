@@ -14,7 +14,7 @@ public class FindOddNoController {
  private CalculationService calculationService;
  
  @PostMapping("/findOddNo")
- public Map<String, Integer> addNumbers(@RequestBody Map<String, Integer> numbers) throws Exception {
+ public Map<String, Integer> findOddNo(@RequestBody Map<String, Integer> numbers) throws Exception {
 	  Map<String, Integer> result = calculationService.findOddNo(numbers);
      return result;
  }

@@ -14,7 +14,7 @@ public class FindBigNoController {
  private CalculationService calculationService;
  
  @PostMapping("/findBigNo")
- public Map<String, Integer> addNumbers(@RequestBody Map<String, Integer> numbers) throws Exception {
+ public Map<String, Integer> findBigNo(@RequestBody Map<String, Integer> numbers) throws Exception {
 	  Map<String, Integer> result = calculationService.findBigNo(numbers);
      return result;
  }
