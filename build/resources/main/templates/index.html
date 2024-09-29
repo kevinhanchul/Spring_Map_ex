@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+<table id="tabId">
+<tr>
+<td key="1">첫번째</td>
+<td>두번째</td>
+</tr>
+<tr key="2">
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</table>
+<button type="button" onclick="fn_abc()">나의층수로</button>
+</form>
+<h2>Result: <span id="result"></span></h2>
+합산: <a href="http://localhost:8080/findSumNo">합산</a><br>
+큰수비교: <a href="http://localhost:8080/findBigNo">큰수비교</a><br>
+홀수: <a href="http://localhost:8080/findOddNo">홀수</a><br>
+가위바위: <a href="http://localhost:8080/findRockGame">가위바위</a><br>
+개구리: <a href="http://localhost:8080/findFlagGame">개구리</a><br>
+뱀: <a href="http://localhost:8080/findSnakeGame">뱀</a><br>
+빙고: <a href="http://localhost:8080/findBinggoGame">빙고</a><br>
+<script>
+function fn_abc() {
+	
+ 	event.preventDefault();
+    var num = {
+	      num1: $("#tabId tr[key='2'] > td").eq(0).text(),   	
+	      num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+	      num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+	      num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+	      num5: $("#tabId tr[key='2'] > td").eq(4).text()
+    };	 
+    $.ajax({
+        url: "/api/add",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").html(result.sumNo+" "+result.cnt);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+    
+}
+</script>
+</body>
+</html>

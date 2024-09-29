@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>Add Two Numbers</h1>
+<form id="addForm">
+<input type="number" id="num1" name="num1" required>
+<input type="number" id="num2" name="num2" required>
+<button type="button" onclick="fn_abc()">나의층수로</button>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+	   // Prevent the form from submitting traditionally
+	   event.preventDefault();
+	   // Gather form data
+     var num = {
+        num1 : $("#num1").val(),
+        num2 : $("#num2").val()
+     };
+	  
+     var numArray = Object.keys(num).map(function(key) {
+         return { key: key, value: num[key] };
+     });
+    
+     $.ajax({
+         url: "/api/add",
+         type: "POST",
+         contentType: "application/json",
+         data: JSON.stringify(numArray),
+         success: function(result) {
+             $("#result").text(result);
+         },
+         error: function(error) {
+             alert("Error: " + error.responseText);
+         }
+     });
+}
+</script>
+</body>
+</html>
