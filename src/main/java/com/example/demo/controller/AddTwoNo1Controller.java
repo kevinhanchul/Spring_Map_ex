@@ -35,6 +35,14 @@ public class AddTwoNo1Controller {
         mav.addObject("message", "Hello, abc.html!");
         return mav;
     }
+
+    @GetMapping("/findSeason")
+    private ModelAndView findSeason() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("findSeason");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
     
     @GetMapping("/findRockGame")
     private ModelAndView findRockGame() {
