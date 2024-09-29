@@ -7,8 +7,9 @@ import java.util.Map;
 public class FindBinggoService {
 
  public Map<String, Integer> findBinggoGame(Map<String, Integer> numberMap) throws Exception {
-	int[][] num = new int[3][3];  //이차원 배열
-	int i, j=0, totJump=0, cntJump=0;
+	int[][] num = new int[3][3];    //이차원 배열선언
+	int i=0, j=0, totJump=0, cntJump=0;
+	int binggo1=0, binggo2=0, binggo3 = 0, Binggo=0;
 	System.out.println(numberMap);
 	num[0][0] = numberMap.get("num1");
 	num[0][1] = numberMap.get("num2");
@@ -22,14 +23,21 @@ public class FindBinggoService {
 
 	for(i=0;i<3;i++) {
 		for(j=0;j<3;j++){
+			if(num[0][j]==1){
+				binggo1++;
+			}
 			totJump+= num[i][j];
 		}
+		if(binggo1==3){
+			Binggo++;
+		}
 	}
-	numberMap.put("전체합산", totJump);
-	numberMap.put("카운트수", i);
-	System.out.println(numberMap);
+	 numberMap.put("totJump", totJump);
+	 numberMap.put("cntJump", i);
+	 numberMap.put("Binggo", Binggo);
+	 System.out.println(numberMap);
 
-	 return numberMap;
+	return numberMap;
  }
  
 }
