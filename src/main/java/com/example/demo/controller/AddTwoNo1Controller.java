@@ -20,14 +20,6 @@ public class AddTwoNo1Controller {
         return mav;
     }
     
-    @GetMapping("/findBigNo")
-    private ModelAndView findBigNo() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("findBigNo");
-        mav.addObject("message", "Hello, abc.html!");
-        return mav;
-    }
-    
     @GetMapping("/findSumNo")
     private ModelAndView findSumNo() {
         ModelAndView mav = new ModelAndView();
@@ -66,8 +58,16 @@ public class AddTwoNo1Controller {
         mav.setViewName("findSnakeGame");
         mav.addObject("message", "Hello, abc.html!");
         return mav;
-    }    
-    
+    }
+
+    @GetMapping("/findBinggoGame")
+    private ModelAndView findBinggoGame() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("findBinggoGame");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+
     @PostMapping("/add2")
     public Map<String, Integer> addNumbers(@RequestBody Map<String, String> numbers) throws Exception {
         Map<String, Integer> intNumbers = new HashMap<>();

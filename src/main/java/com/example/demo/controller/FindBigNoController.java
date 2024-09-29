@@ -1,6 +1,6 @@
 
 package com.example.demo.controller;
-import com.example.demo.service.CalculationService;
+import com.example.demo.service.FindBinggoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,11 +11,11 @@ import java.util.Map;
 @RequestMapping("/api")
 public class FindBigNoController {
  @Autowired
- private CalculationService calculationService;
+ private FindBinggoService findBinggoService;
  
- @PostMapping("/findBigNo")
- public Map<String, Integer> findBigNo(@RequestBody Map<String, Integer> numbers) throws Exception {
-	  Map<String, Integer> result = calculationService.findBigNo(numbers);
-     return result;
+ @PostMapping("/findBinggoGame1")
+ public Map<String, Integer> findBinggoGame1(@RequestBody Map<String, Integer> numbers) throws Exception {
+
+     return findBinggoService.findBinggoGame(numbers);
  }
 }

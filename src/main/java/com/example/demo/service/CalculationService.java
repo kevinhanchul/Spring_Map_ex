@@ -35,15 +35,27 @@ public class CalculationService {
     return numberMap;
  }
  
- public Map<String, Integer> findOddNo(Map<String, Integer> numberMap) throws Exception {
-		int chkNo, oddNo=0;
+ public Map<String, Object> findOddNo(Map<String, Integer> numberMap) throws Exception {
+		int chkNo, oddNo = 0;
+        String chkOdd = (String) "";
+        Map<String, Object> retMap = new HashMap<>();;
+
+        chkOdd = "너";
+
 		chkNo = numberMap.get("num1");
-	    if(chkNo%2==0) {
-	    	oddNo=0;
+
+	    if(chkNo%2 == 0) {
+	    	oddNo = 0;
+            chkOdd = "짝수";
 	    }
-	    else oddNo=1;
-	    numberMap.put("oddNo", oddNo);
-	    return numberMap;
+	    else {
+            oddNo = 1;
+            chkOdd = "홀수";
+        }
+	    //numberMap.put("oddNo", oddNo);
+
+         retMap.put("chkOdd", chkOdd);
+	     return retMap;
  }
  
  public Map<String, Integer> findSumNo(Map<String, Integer> numberMap) throws Exception {

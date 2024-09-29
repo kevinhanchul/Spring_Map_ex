@@ -32,7 +32,7 @@ function fn_abc() {
         contentType: "application/json",
         data: JSON.stringify(num),
         success: function(result) {
-            $("#result").text(result.oddNo);
+            $("#result").text(result.chkOdd);
         },
         error: function(error) {
             alert("Error: " + error.responseText);

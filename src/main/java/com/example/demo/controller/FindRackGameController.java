@@ -43,6 +43,7 @@ public class FindRackGameController {
 	 
 	 @PostMapping("/findBinggoGame")
 	 public Map<String, Integer> findBinggoGame(@RequestBody Map<String, Integer> numbers) throws Exception {
+		 System.out.println(numbers);
 		 Map<String, Integer> result = findBinggoService.findBinggoGame(numbers);
 	 return result;
 	 }
