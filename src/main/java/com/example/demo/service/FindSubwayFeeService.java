@@ -6,7 +6,7 @@ import java.util.Map;
 @Service
 public class FindSubwayFeeService {
 
- public Map<String, Integer> findFlagGame(Map<String, Integer> numberMap) throws Exception {
+ public Map<String, Integer> findSubwayFee(Map<String, Integer> numberMap) throws Exception {
 		int[] num = new int[10];
 		int totJump=0, cntJump=0;
 		System.out.println(numberMap);
