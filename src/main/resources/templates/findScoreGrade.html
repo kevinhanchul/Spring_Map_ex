@@ -44,12 +44,12 @@ function fn_abc() {
     };
 	  
     $.ajax({
-        url: "/api/findSumNo",
+        url: "/api/findScoreGrade",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),
         success: function(result) {
-            $("#result").text(result.sumNo);
+            $("#result").text(result.ScoreGrade);
         },
         error: function(error) {
             alert("Error: " + error.responseText);
