@@ -1,7 +1,7 @@
 
 package com.example.demo.controller;
 
-import com.example.demo.service.FindBinggoService;
+import com.example.demo.service.Check369Service;
 import com.example.demo.service.FindFlagService;
 import com.example.demo.service.FindRackService;
 import com.example.demo.service.FindSnakeService;
@@ -17,12 +17,13 @@ import java.util.Map;
 @RequestMapping("/api")
 public class Check369Controller {
 	 @Autowired
-	 private FindRackService findRackService;
+	 private Check369Service check369Service;
 
 	 @PostMapping("/check369")
 	 public Map<String, Object> check369(@RequestBody Map<String, Object> numbers) throws Exception {
+	 	System.out.println(numbers);
 
-	 return check369Service.check369(numbers);
+	 	return check369Service.check369(numbers);
 	 }
  
 }
