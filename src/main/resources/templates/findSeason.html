@@ -28,7 +28,7 @@ function fn_abc() {
     var num = {
         month : $("#month").val()
     };
-	  
+    console.log(num);
     $.ajax({
         url: "/api/findSeason",
         type: "POST",

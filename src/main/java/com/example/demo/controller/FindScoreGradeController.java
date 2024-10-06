@@ -1,7 +1,7 @@
 
 package com.example.demo.controller;
 
-import com.example.demo.service.CalculationService;
+import com.example.demo.service.FindScoreGradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,20 +13,15 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class FindScoreGradeController {
- @Autowired
- private CalculationService calculationService;
-
-    @PostMapping("/findSumNo")
-    public Map<String, Integer> findSumNo(@RequestBody Map<String, Integer> numbers) throws Exception {
-        Map<String, Integer> result = calculationService.findSumNo(numbers);
-        return result;
-    }
-
-    @PostMapping("/findOddNo")
-        public Map<String, Object> findOddNo(@RequestBody Map<String, Integer> numbers) throws Exception {
-        return calculationService.findOddNo(numbers);
-    }
-
+	 @Autowired
+	 private FindScoreGradeService findScoreGradeService;
+	 
+	 @PostMapping("/findScoreGrade")
+	 public Map<String, Object> findScoreGrade(@RequestBody Map<String, Object> paramMap) throws Exception {
+		System.out.println(paramMap);
+	 	return findScoreGradeService.findScoreGrade(paramMap);
+	 }
+ 
 }
 
 

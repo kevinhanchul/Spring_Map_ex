@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -18,7 +19,9 @@ public class FindSubwayFeeController {
 
     @PostMapping("/findSubwayFee")
     public Map<String, Integer> findSubwayFee(@RequestBody Map<String, Integer> numbers) throws Exception {
-        return calculationService.findSubwayFee(numbers);
+//        return calculationService.findSubwayFee(numbers);
+        Map<String, Integer> a = new HashMap<>();
+        return a;
     }
 
 }

@@ -10,6 +10,7 @@
 <h4>SnakeGame</h4>
 <form id="addForm">
 
+컴퓨터 숫자<br>
 <table id="tabId">
 <tr>
     <td>숫자1</td><td>숫자2</td><td>숫자3</td>
@@ -24,12 +25,27 @@
     <td>9</td><td>7</td><td>8</td>
 </tr>
 </table>
+선택한숫자<br>
+<input type="text">
+<input type="text">
+<input type="text"><br>
+<input type="text">
+<input type="text">
+<input type="text"><br>
+<input type="text">
+<input type="text">
+<input type="text"><br>
 
 <button type="button" onclick="fn_abc()">나의층수로</button>
 </form>
 <h2>뛰어넘은 판의 수: <span id="result1"></span></h2>
 <h2>주사위한 수: <span id="result2"></span></h2>
 <script>
+$(function(){
+    console.log("a");
+    $("#tabId").hide();
+});
+
 function fn_abc() {
     var num = {
         num1: $("#tabId tr[key='1'] > td").eq(0).text(),

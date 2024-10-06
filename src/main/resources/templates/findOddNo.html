@@ -25,7 +25,7 @@ function fn_abc() {
     var num = {
         num1: $("#tabId tr[key='2'] > td").eq(0).text(),
     };
-	  
+	console.log(num);
     $.ajax({
         url: "/api/findOddNo",
         type: "POST",
