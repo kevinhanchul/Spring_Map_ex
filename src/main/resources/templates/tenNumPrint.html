@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+<input type="text" id="bu1" value="11"><br>
+<input type="text" id="bu2" value="12"><br>
+<input type="text" id="bu3" value="13"><br>
+<input type="text" id="bu4" value="14"><br>
+<input type="text" id="bu5" value="15"><br>
+<input type="text" id="bu6" value="16"><br>
+<input type="text" id="bu7" value="17"><br>
+<input type="text" id="bu8" value="18"><br>
+<input type="text" id="bu9" value="19"><br>
+<input type="text" id="bu10" value="20"><br>
+<button type="button" onclick="fn_abc()">10개출력</button><br>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+    var num = {
+        num1: $("#bu1").val(),
+        num2: $("#bu2").val(),
+        num3: $("#bu3").val(),
+        num4: $("#bu4").val(),
+        num5: $("#bu5").val(),
+        num6: $("#bu6").val(),
+        num7: $("#bu7").val(),
+        num8: $("#bu8").val(),
+        num9: $("#bu9").val(),
+        num10: $("#bu10").val()
+    };
+
+    $.ajax({
+        url: "/api/tenNumPrint",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.scoreGrade);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+</body>
+</html>

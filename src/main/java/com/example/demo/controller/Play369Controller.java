@@ -1,7 +1,7 @@
 
 package com.example.demo.controller;
 
-import com.example.demo.service.FindSubwayFeeService;
+import com.example.demo.service.Play369Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,22 +13,22 @@ import java.util.Map;
 
 @RestController
 //@RequestMapping("/api")
-public class FindSubwayFeeController {
+public class Play369Controller {
 	 @Autowired
-	 private FindSubwayFeeService findSubwayFeeService;
+	 private Play369Service play369Service;
 
-	@GetMapping("/findSubwayFee")
-	private ModelAndView findSubwayFee() {
+	@GetMapping("/play369")
+	private ModelAndView play369() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("findSubwayFee");
+		mav.setViewName("play369");
 		mav.addObject("message", "Hello, abc.html!");
 		return mav;
 	}
 
-	 @PostMapping("/api/findSubwayFee")
-	 public Map<String, Object> findSubwayFee(@RequestBody Map<String, Object> paramMap) throws Exception {
+	 @PostMapping("/api/play369")
+	 public Map<String, Object> play369(@RequestBody Map<String, Object> paramMap) throws Exception {
 		System.out.println(paramMap);
-	 	return findSubwayFeeService.findSubwayFee(paramMap);
+	 	return play369Service.play369(paramMap);
 	 }
  
 }

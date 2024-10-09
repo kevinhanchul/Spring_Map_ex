@@ -15,29 +15,43 @@ table, tr, td{
 <body>
 <h4>Add Two Numbers</h4>
 <form id="addForm">
-    나이1:<label id="la1">19</label><br>
-    나이2:<label id="la2">5</label><br>
-    나이3:<label id="la3">59</label><br>
-    나이4:<label id="la4">45</label><br>
-<button type="button" onclick="fn_abc()">요금확인</button>
+<table>
+    <thead>
+        <tr>
+            <th>일자</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>일자</td>
+        </tr>
+    </tbody>
+</table>
+<button type="button" onclick="fn_abc()">10개출력</button><br>
 </form>
 <h2>Result: <span id="result"></span></h2>
 <script>
 function fn_abc() {
     var num = {
-        num1: $("label").eq(0).text(),
-        num2: $("label").eq(1).text(),
-        num3: $("label").eq(2).text(),
-        num4: $("label").eq(3).text()
+        num1: $("#bu1").val(),
+        num2: $("#bu2").val(),
+        num3: $("#bu3").val(),
+        num4: $("#bu4").val(),
+        num5: $("#bu5").val(),
+        num6: $("#bu6").val(),
+        num7: $("#bu7").val(),
+        num8: $("#bu8").val(),
+        num9: $("#bu9").val(),
+        num10: $("#bu10").val()
     };
-	  
+
     $.ajax({
-        url: "/api/findSubwayFee",
+        url: "/api/buySellStack",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),
         success: function(result) {
-            $("#result").text(result.sumNo);
+            $("#result").text(result.scoreGrade);
         },
         error: function(error) {
             alert("Error: " + error.responseText);

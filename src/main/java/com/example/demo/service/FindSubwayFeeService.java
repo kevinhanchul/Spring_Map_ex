@@ -6,29 +6,19 @@ import java.util.Map;
 @Service
 public class FindSubwayFeeService {
 
- public Map<String, Integer> findSubwayFee(Map<String, Integer> numberMap) throws Exception {
-		int[] num = new int[10];
-		int totJump=0, cntJump=0;
-		System.out.println(numberMap);
-		num[0] = numberMap.get("num1");
-		num[1] = numberMap.get("num2");
-		num[2] = numberMap.get("num3");
-		num[3] = numberMap.get("num4");
-		num[4] = numberMap.get("num5");
-		num[5] = numberMap.get("num6");
-		num[6] = numberMap.get("num7");
-		num[7] = numberMap.get("num8");
-		num[8] = numberMap.get("num9");
-		num[9] = numberMap.get("num10");
-		
-		while(totJump<10) {
-			totJump+= num[cntJump];
-			cntJump ++; 
-		}
-	    
-	    numberMap.put("totJump", totJump);
-	    numberMap.put("cntJump", cntJump);
-	    return numberMap;
+ public Map<String, Object> findSubwayFee(Map<String, Object> paramMap) throws Exception {
+	 System.out.println(paramMap);
+	 int[] num = new int[4];
+	 int i=0;
+	 num[0] = Integer.parseInt(String.valueOf(paramMap.get("num1")));
+	 num[1] = Integer.parseInt(String.valueOf(paramMap.get("num2")));
+	 num[2] = Integer.parseInt(String.valueOf(paramMap.get("num3")));
+	 num[3] = Integer.parseInt(String.valueOf(paramMap.get("num4")));
+	 for(i=0;i<4;i++){
+		 System.out.println(num[i]);
+	 }
+	 paramMap.put("scoreGrade", num);
+	 return paramMap;
  }
  
 }
