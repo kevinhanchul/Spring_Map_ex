@@ -7,17 +7,14 @@ import java.util.Map;
 public class FindScoreGradeService {
 
  public Map<String, Object> findScoreGrade(Map<String, Object> paramMap) throws Exception {
-	 int score=0;
-	 String month="";
-	 int i_month=0;
 	 System.out.println(paramMap);
-	 score = (Integer) paramMap.get("score");
-//	 i_month = Integer.parseInt(month);
-	 System.out.println(paramMap);
-	 
-	 paramMap.put("score", score);
-	 System.out.println(paramMap);
-
+	 int num1 = Integer.parseInt(String.valueOf(paramMap.get("num1")));
+	 System.out.println("num1 : "+ num1);
+	 String scoreGrade = "F";
+	 if (num1>90){
+		 scoreGrade = "A";
+	 }
+	 paramMap.put("scoreGrade", scoreGrade);
 	 return paramMap;
  }
  
