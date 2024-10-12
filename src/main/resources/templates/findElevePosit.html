@@ -6,45 +6,163 @@
 <title>Add Numbers</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-table, tr, td{
-	border : 1px solid black;
-	border-collapse: collapse;
-}
+    table, tr, td{
+        border : 1px solid black;
+        border-collapse: collapse;
+    }
+    #elDe1{
+        width:100px;
+        height:100px;
+        border:1px solid black;
+        position: absolute;
+        top : 300px;
+        left: 10px;
+    }
+    #DoorLeelDe1{
+        width:50px;
+        height:100px;
+        border:1px solid black;
+        position: relative;
+        top : 0px;
+        left: 0px;
+    }
+    #DoorRielDe1{
+        width:50px;
+        height:100px;
+        border:1px solid black;
+        position: relative;
+        top : -103px;
+        left: 50px;
+    }
+    #elDe2{
+        width:100px;
+        height:100px;
+        border:1px solid black;
+        position: absolute;
+        top : 300px;
+        left: 150px;
+    }
+    #DoorLeelDe2{
+        width:50px;
+        height:100px;
+        border:1px solid black;
+        position: relative;
+        top : 0px;
+        left: 0px;
+    }
+    #DoorRielDe2{
+        width:50px;
+        height:100px;
+        border:1px solid black;
+        position: relative;
+        top : -103px;
+        left: 50px;
+    }
 </style>
 </head>
 <body>
+<h2>Result: <span id="result"></span></h2>
+
 <h4>Add Two Numbers</h4>
 <form id="addForm">
-<table id="tabId">
-<tr>
-<td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
-<td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
-</tr>
-<tr key="2">
-<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
-</tr>
-</table>
-<button type="button" onclick="fn_abc()">나의층수로</button>
+    <table id="tabId">
+        <tr>
+            <td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
+            <td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
+        </tr>
+        <!--목적지1-->
+        <tr key="de1">
+            <td>6</td><td>2</td><td>3</td><td>4</td><td>5</td>
+            <td>8</td><td>7</td><td>4</td><td>12</td><td>11</td>
+        </tr>
+        <!--목적지2-->
+        <tr key="de2">
+            <td>6</td><td>2</td><td>3</td><td>4</td><td>5</td>
+            <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+        </tr>
+        <!--출발지1-->
+        <tr key="st1">
+            <td>6</td><td>3</td><td>5</td><td>7</td><td>9</td>
+            <td>4</td><td>7</td><td>9</td><td>19</td><td>20</td>
+        </tr>
+        <!--출발지2-->
+        <tr key="st2">
+            <td>3</td><td>4</td><td>10</td><td>14</td><td>8</td>
+            <td>2</td><td>7</td><td>8</td><td>11</td><td>3</td>
+        </tr>
+    </table>
+    <button type="button" onclick="fn_abc1()">위치확인</button><br>
+    <button type="button" onclick="fn_abc()">나의층수로</button><br>
+    <div id="elDe1">
+        <div id="DoorLeelDe1">
+
+        </div>
+        <div id="DoorRielDe1">
+
+        </div>
+    </div>
+    <div id="elDe2">
+        <div id="DoorLeelDe2">
+
+        </div>
+        <div id="DoorRielDe2">
+
+        </div>
+    </div>
 </form>
-<h2>Result: <span id="result"></span></h2>
+
 <script>
+var num = {
+    de1 : [$("#tabId tr[key='de1'] > td").eq(0).text(),
+        $("#tabId tr[key='de1'] > td").eq(1).text(),
+        $("#tabId tr[key='de1'] > td").eq(2).text(),
+        $("#tabId tr[key='de1'] > td").eq(3).text(),
+        $("#tabId tr[key='de1'] > td").eq(4).text(),
+        $("#tabId tr[key='de1'] > td").eq(5).text(),
+        $("#tabId tr[key='de1'] > td").eq(6).text(),
+        $("#tabId tr[key='de1'] > td").eq(7).text(),
+        $("#tabId tr[key='de1'] > td").eq(8).text(),
+        $("#tabId tr[key='de1'] > td").eq(9).text()
+        ],
+    de2 : [$("#tabId tr[key='de2'] > td").eq(0).text(),
+        $("#tabId tr[key='de2'] > td").eq(1).text(),
+        $("#tabId tr[key='de2'] > td").eq(2).text(),
+        $("#tabId tr[key='de2'] > td").eq(3).text(),
+        $("#tabId tr[key='de2'] > td").eq(4).text(),
+        $("#tabId tr[key='de2'] > td").eq(5).text(),
+        $("#tabId tr[key='de2'] > td").eq(6).text(),
+        $("#tabId tr[key='de2'] > td").eq(7).text(),
+        $("#tabId tr[key='de2'] > td").eq(8).text(),
+        $("#tabId tr[key='de2'] > td").eq(9).text()
+        ],
+    st1 : [$("#tabId tr[key='st1'] > td").eq(0).text(),
+        $("#tabId tr[key='st1'] > td").eq(1).text(),
+        $("#tabId tr[key='st1'] > td").eq(2).text(),
+        $("#tabId tr[key='st1'] > td").eq(3).text(),
+        $("#tabId tr[key='st1'] > td").eq(4).text(),
+        $("#tabId tr[key='st1'] > td").eq(5).text(),
+        $("#tabId tr[key='st1'] > td").eq(6).text(),
+        $("#tabId tr[key='st1'] > td").eq(7).text(),
+        $("#tabId tr[key='st1'] > td").eq(8).text(),
+        $("#tabId tr[key='st1'] > td").eq(9).text()
+        ],
+    st2 : [$("#tabId tr[key='st2'] > td").eq(0).text(),
+        $("#tabId tr[key='st2'] > td").eq(1).text(),
+        $("#tabId tr[key='st2'] > td").eq(2).text(),
+        $("#tabId tr[key='st2'] > td").eq(3).text(),
+        $("#tabId tr[key='st2'] > td").eq(4).text(),
+        $("#tabId tr[key='st2'] > td").eq(5).text(),
+        $("#tabId tr[key='st2'] > td").eq(6).text(),
+        $("#tabId tr[key='st2'] > td").eq(7).text(),
+        $("#tabId tr[key='st2'] > td").eq(8).text(),
+        $("#tabId tr[key='st2'] > td").eq(9).text()
+        ]
+};
+
 function fn_abc() {
-    var num = {
-        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
-        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
-        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
-        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
-        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
-        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
-        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
-        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
-        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
-        num10: $("#tabId tr[key='2'] > td").eq(9).text()
-    };
-	  
+    console.log(num);
     $.ajax({
-        url: "/api/findSumNo",
+        url: "/api/findElevePosit",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),
@@ -56,6 +174,23 @@ function fn_abc() {
         }
     });
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function fn_abc1() {
+    var a = num.de1[0];
+    for (var i=0;i<10;i++){
+        a = num.de1[i];
+        a = a*50+300;
+        await sleep(3000);
+        $("#elDe1").css("top",a+"px");
+    }
+}
+
 </script>
+
+
 </body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+    <table>
+        <tr>
+            <td>경주</td>
+            <td>결과</td>
+            <td>순위</td>
+            <td>종료여부</td>
+        </tr>
+        <tr key="raceRes">
+            <td>1경주</td>
+            <td>결과</td>
+            <td>1,2,3,4,5,6</td>
+            <td>종료</td>
+        </tr>
+        <tr key="mySell">
+            <td>1경주</td>
+            <td>단승</td>
+            <td>1</td>
+            <td>1000</td>
+        </tr>
+    </table>
+<button type="button" onclick="fn_abc()">10개출력</button><br>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+    var num = {
+        num1: $("#bu1").val(),
+        num2: $("#bu2").val(),
+        num3: $("#bu3").val(),
+        num4: $("#bu4").val(),
+        num5: $("#bu5").val(),
+        num6: $("#bu6").val(),
+        num7: $("#bu7").val(),
+        num8: $("#bu8").val(),
+        num9: $("#bu9").val(),
+        num10: $("#bu10").val()
+    };
+
+    $.ajax({
+        url: "/api/playBycle",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.scoreGrade);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+</body>
+</html>

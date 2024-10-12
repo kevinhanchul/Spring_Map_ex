@@ -26,9 +26,17 @@ public class BuySellStackController {
 	}
 
 	 @PostMapping("/api/buySellStack")
-	 public Map<String, Object> buySellStack(@RequestBody Map<String, Object> paramMap) throws Exception {
+	 public boolean buySellStack(@RequestBody Map<String, Object> paramMap) throws Exception {
 		System.out.println(paramMap);
-	 	return buySellStackService.buySellStack(paramMap);
+		if(!buySellStackService.chkDy(paramMap)){
+			return false;
+		};
+		if(!buySellStackService.chkMoney(paramMap)){
+		 return false;
+		};
+		buySellStackService.sellStack(paramMap);
+		buySellStackService.buyStack(paramMap);
+		return true;
 	 }
  
 }
