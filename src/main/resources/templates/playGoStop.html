@@ -20,10 +20,18 @@ table, tr, td{
 <td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
 <td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
 </tr>
-<tr key="2">
-<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
-</tr>
+    <tr key="myPe">
+        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+    </tr>
+    <tr key="youPe">
+        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+    </tr>
+    <tr key="badacPe">
+        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+    </tr>
 </table>
 <button type="button" onclick="fn_abc()">나의층수로</button>
 </form>
@@ -44,7 +52,7 @@ function fn_abc() {
     };
 	  
     $.ajax({
-        url: "/api/findSumNo",
+        url: "/api/playGoStop",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),

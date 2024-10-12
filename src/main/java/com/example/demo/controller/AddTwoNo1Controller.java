@@ -20,14 +20,6 @@ public class AddTwoNo1Controller {
         return mav;
     }
     
-    @GetMapping("/findSumNo")
-    private ModelAndView findSumNo() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("findSumNo");
-        mav.addObject("message", "Hello, abc.html!");
-        return mav;
-    }
-    
     @GetMapping("/findOddNo")
     private ModelAndView findOddNo() {
         ModelAndView mav = new ModelAndView();

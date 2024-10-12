@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,7 @@ table, tr, td{
 </tr>
 </table>
 <button type="button" onclick="fn_abc()">나의층수로</button>
+    <h1 th:text="${message}">Default message</h1>
 </form>
 <h2>Result: <span id="result"></span></h2>
 <script>
