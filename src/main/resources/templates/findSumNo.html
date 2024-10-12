@@ -27,10 +27,23 @@ table, tr, td{
 </tr>
 </table>
 <button type="button" onclick="fn_abc()">나의층수로</button>
+<button type="button" onclick="fn_abc1()">나의층수로1</button>
     <h1 th:text="${message}">Default message</h1>
 </form>
 <h2>Result: <span id="result"></span></h2>
 <script>
+var num = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
+    };
 function fn_abc() {
     var num = {
         num1: $("#tabId tr[key='2'] > td").eq(0).text(),
@@ -57,6 +70,30 @@ function fn_abc() {
             alert("Error: " + error.responseText);
         }
     });
+}
+function fn_abc1() {
+
+    /*$.ajax({
+        url: "/api/findSumNo1",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.bigNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });*/
+
+    var link = 'http://localhost:8080/findSumNo1';
+    window.open(link, "PopupNew", "width=500,height=600");
+    //window.open("popup.html", "PopupNew", "width=500,height=600");
+    //https://blog.naver.com/deersoul6662/221805875601 => 새창 참고
+
+
+
+
 }
 </script>
 </body>
