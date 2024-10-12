@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, th, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+변화한값:<br>
+<table>
+    <thead>
+        <tr>
+            <th>일자</th>
+            <th>금액</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="com1">
+            <td>2024.09.01</td>
+            <td>1,002</td>
+        </tr>
+        <tr id="com2">
+            <td>2024.09.02</td>
+            <td>1,102</td>
+        </tr>
+        <tr id="com3">
+            <td>2024.09.03</td>
+            <td>905</td>
+        </tr>
+    </tbody>
+</table>
+내가사고판값:<br>
+<!--이거관련 일자는 달력으로-->
+    <table>
+        <thead>
+        <tr>
+            <th>일자</th>
+            <th>금액</th>
+            <th>구매여부</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="my1">
+            <td><input type="text" value="20240901"></td>
+            <td><input type="number" value=1000></td>
+            <td><input type="text" value="삼"></td>
+        </tr>
+        <tr id="my2">
+            <td><input type="text" value="20240902"></td>
+            <td><input type="number" value=1100></td>
+            <td><input type="text" value="팜"></td>
+        </tr>
+        <tr id="my3">
+            <td><input type="text" value="20240903"></td>
+            <td><input type="number" value=1050></td>
+            <td><input type="text" value="삼"></td>
+        </tr>
+        </tbody>
+    </table>
+<button type="button" onclick="fn_abc()">확인</button><br>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+    var num = {
+        comDy1: $("#com1 > td").eq(0).text(),
+        comWon1: $("#com1 > td").eq(1).text(),
+        comDy2: $("#com2 > td").eq(0).text(),
+        comWon2: $("#com2 > td").eq(1).text(),
+        comDy3: $("#com3 > td").eq(0).text(),
+        comWon3: $("#com3 > td").eq(1).text(),
+        myDy1: $("#my1 > td").eq(0).children("input").val(),
+        myWon1: $("#my1 > td").eq(1).children("input").val(),
+        myBuySell1: $("#my1 > td").eq(2).children("input").val(),
+        myDy2: $("#my2 > td").eq(0).children("input").val(),
+        myWon2: $("#my2 > td").eq(1).children("input").val(),
+        myBuySell2: $("#my2 > td").eq(2).children("input").val(),
+        myDy3: $("#my3 > td").eq(0).children("input").val(),
+        myWon3: $("#my3 > td").eq(1).children("input").val(),
+        myBuySell3: $("#my3 > td").eq(2).children("input").val()
+    };
+    console.log(num);
+    $.ajax({
+        url: "/api/buySellStack",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.scoreGrade);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+</body>
+</html>

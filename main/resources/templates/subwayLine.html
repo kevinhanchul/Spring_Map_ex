@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+<table id="tabId">
+    <tr>
+    <td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
+    <td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
+    </tr>
+    <tr key="2">
+        <td>계양</td><td>귤현</td><td>박촌</td><td>임학</td><td>계산</td>
+        <td>경인교대</td><td>작전</td><td>갈산</td><td>부평구평</td><td>부평시장</td>
+    </tr>
+    <tr key="3">
+        <td>부평</td><td>동수</td><td>부평삼거리</td><td>간석오거리</td><td>인천시청</td>
+        <td>예술회관</td><td>인천터미널</td><td>문학경기장</td><td>선학</td><td>신연수</td>
+    </tr>
+</table>
+출발지<input type="text">
+목적지<input type="text">
+<button type="button" onclick="fn_abc()">나의층수로</button>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+    var num = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
+    };
+	  
+    $.ajax({
+        url: "/api/findSumNo",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.sumNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+</body>
+</html>

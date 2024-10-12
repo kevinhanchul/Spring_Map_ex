@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+    나이1:<label id="la1">19</label><br>
+    나이2:<label id="la2">5</label><br>
+    나이3:<label id="la3">59</label><br>
+    나이4:<label id="la4">45</label><br>
+<button type="button" onclick="fn_abc()">요금확인</button>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+    var num = {
+        num1: $("label").eq(0).text(),
+        num2: $("label").eq(1).text(),
+        num3: $("label").eq(2).text(),
+        num4: $("label").eq(3).text()
+    };
+	  
+    $.ajax({
+        url: "/api/findSubwayFee",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.sumNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+</body>
+</html>

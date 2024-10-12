@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>Add Two Numbers</h1>
+<form id="addForm">
+<table id="tabId">
+<tr>
+<td>첫번째</td>
+<td>두번째</td>
+</tr>
+<tr key="2">
+<td>3</td>
+<td>4</td>
+</tr>
+</table>
+<button type="button" onclick="fn_abc()">나의층수로</button>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+    var num = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text()
+    };
+	  
+    $.ajax({
+        url: "/api/findBigNo",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.bigNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+</body>
+</html>

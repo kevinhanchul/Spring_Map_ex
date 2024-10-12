@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+    <!--이거는 div모양꾸미는 것으로-->
+    <div id="bu1">1</div>
+    <div id="bu2">2</div>
+    <div id="bu3">3</div>
+    <div id="bu4">4</div>
+    <div id="bu5">5</div>
+    <div id="bu6">6</div>
+    <div id="bu7">7</div>
+    <div id="bu8">8</div>
+    <div id="bu9">9</div>
+    <div id="bu10">10</div>
+    <button type="button" onclick="fn_abc()">10개출력</button><br>
+</form>
+<h2>Result: <span id="result"></span></h2>
+<script>
+function fn_abc() {
+    var num = {
+        num1: $("#bu1").text(),
+        num2: $("#bu2").text(),
+        num3: $("#bu3").text(),
+        num4: $("#bu4").text(),
+        num5: $("#bu5").text(),
+        num6: $("#bu6").text(),
+        num7: $("#bu7").text(),
+        num8: $("#bu8").text(),
+        num9: $("#bu9").text(),
+        num10: $("#bu10").text()
+    };
+
+    $.ajax({
+        url: "/api/play369",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.scoreGrade);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+</body>
+</html>
