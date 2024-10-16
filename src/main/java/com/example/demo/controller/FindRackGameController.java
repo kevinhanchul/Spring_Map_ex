@@ -42,10 +42,16 @@ public class FindRackGameController {
 	 }
 	 
 	 @PostMapping("/findBinggoGame")
-	 public Map<String, Integer> findBinggoGame(@RequestBody Map<String, Integer> numbers) throws Exception {
-		 System.out.println(numbers);
-		 Map<String, Integer> result = findBinggoService.findBinggoGame(numbers);
-	 return result;
+	 public Map<String, Object> findBinggoGame(@RequestBody Map<String, Object> data) throws Exception {
+		 // num1과 num2 각각을 추출
+		 Map<String, Object> num1 = (Map<String, Object>) data.get("num1");
+		 Map<String, Object> num2 = (Map<String, Object>) data.get("num2");
+		 System.out.println("num1: " + num1);
+		 System.out.println("num2: " + num2);
+
+		 Map<String, Object> result = findBinggoService.findBinggoGame(data);
+		 //return findBinggoService.findBinggoGame(num1);
+		 return result;
 	 }
  
 }

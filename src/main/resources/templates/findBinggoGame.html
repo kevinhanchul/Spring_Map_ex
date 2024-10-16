@@ -7,39 +7,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h4>SnakeGame</h4>
-<form id="addForm">
-
-컴퓨터 숫자<br>
-<table id="tabId">
-<tr>
-    <td>숫자1</td><td>숫자2</td><td>숫자3</td>
-</tr>
-<tr key="1">
-    <td>6</td><td>3</td><td>2</td>
-</tr>
-<tr key="2">
-    <td>1</td><td>4</td><td>5</td>
-</tr>
-<tr key="3">
-    <td>9</td><td>7</td><td>8</td>
-</tr>
-</table>
-선택한숫자<br>
-<input type="text">
-<input type="text">
-<input type="text"><br>
-<input type="text">
-<input type="text">
-<input type="text"><br>
-<input type="text">
-<input type="text">
-<input type="text"><br>
-
-<button type="button" onclick="fn_abc()">나의층수로</button>
-</form>
-<h2>뛰어넘은 판의 수: <span id="result1"></span></h2>
-<h2>주사위한 수: <span id="result2"></span></h2>
 <script>
 $(function(){
     console.log("a");
@@ -47,7 +14,7 @@ $(function(){
 });
 
 function fn_abc() {
-    var num = {
+    var num1 = {
         num1: $("#tabId tr[key='1'] > td").eq(0).text(),
         num2: $("#tabId tr[key='1'] > td").eq(1).text(),
         num3: $("#tabId tr[key='1'] > td").eq(2).text(),
@@ -58,12 +25,29 @@ function fn_abc() {
         num8: $("#tabId tr[key='3'] > td").eq(1).text(),
         num9: $("#tabId tr[key='3'] > td").eq(2).text()
     };
-	  
+
+    var num2 = {
+        num1: $("#chNo1").val(),
+        num2: $("#chNo2").val(),
+        num3: $("#chNo3").val(),
+        num4: $("#chNo4").val(),
+        num5: $("#chNo5").val(),
+        num6: $("#chNo6").val(),
+        num7: $("#chNo7").val(),
+        num8: $("#chNo8").val(),
+        num9: $("#chNo9").val()
+    };
+
+    var dataToSend = {
+        num1: num1,
+        num2: num2
+    };
+
     $.ajax({
         url: "/api/findBinggoGame",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(num),
+        data: JSON.stringify(dataToSend),
         success: function(result) {
             $("#result1").text(result.totJump);
             $("#result2").text(result.cntJump);
@@ -75,6 +59,42 @@ function fn_abc() {
     });
 }
 </script>
+
+
+<h4>SnakeGame</h4>
+<form id="addForm">
+
+    컴퓨터 숫자<br>
+    <table id="tabId">
+        <tr>
+            <td>숫자1</td><td>숫자2</td><td>숫자3</td>
+        </tr>
+        <tr key="1">
+            <td>6</td><td>3</td><td>2</td>
+        </tr>
+        <tr key="2">
+            <td>1</td><td>4</td><td>5</td>
+        </tr>
+        <tr key="3">
+            <td>9</td><td>7</td><td>8</td>
+        </tr>
+    </table>
+    선택한숫자<br>
+    <input type="text" id="chNo1" value="3">
+    <input type="text" id="chNo2" value="4">
+    <input type="text" id="chNo3" value="8"><br>
+    <input type="text" id="chNo4" value="1">
+    <input type="text" id="chNo5" value="2">
+    <input type="text" id="chNo6" value="5"><br>
+    <input type="text" id="chNo7" value="7">
+    <input type="text" id="chNo8" value="9">
+    <input type="text" id="chNo9" value="3"><br>
+
+    <button type="button" onclick="fn_abc()">나의층수로</button>
+</form>
+<h2>뛰어넘은 판의 수: <span id="result1"></span></h2>
+<h2>주사위한 수: <span id="result2"></span></h2>
+
 </body>
 </html>
 

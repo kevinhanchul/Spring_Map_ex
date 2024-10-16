@@ -26,8 +26,9 @@ table, tr, td{
 <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
 </tr>
 </table>
-<button type="button" onclick="fn_abc()">나의층수로</button>
-<button type="button" onclick="fn_abc1()">나의층수로1</button>
+<button type="button" onclick="fn_abc()">합산하기</button>
+<button type="button" onclick="fn_abc1()">새창띄우기</button>
+<button type="button" onclick="fn_abc2()">맵2개보내기</button>
     <h1 th:text="${message}">Default message</h1>
 </form>
 <h2>Result: <span id="result"></span></h2>
@@ -91,10 +92,54 @@ function fn_abc1() {
     //window.open("popup.html", "PopupNew", "width=500,height=600");
     //https://blog.naver.com/deersoul6662/221805875601 => 새창 참고
 
-
-
-
 }
+
+function fn_abc2(){
+    var num1 = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
+    };
+
+    var num2 = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
+    };
+
+    var paramData = {
+        num1 : num1,
+        num2 : num2
+    }
+
+    $.ajax({
+        url: "/api/findSumNo2",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(paramData),
+        success: function(result) {
+            $("#result").text(result.sumNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+
 </script>
 </body>
 </html>

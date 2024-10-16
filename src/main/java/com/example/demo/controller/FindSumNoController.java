@@ -28,6 +28,11 @@ public class FindSumNoController {
         return result;
     }
 
+    @PostMapping("/api/findSumNo2")
+    public Map<String, Object> findSumNo2(@RequestBody Map<String, Object> numbers) throws Exception {
+        return findSumNoService.findSumNo2(numbers);
+    }
+
 }
 
 

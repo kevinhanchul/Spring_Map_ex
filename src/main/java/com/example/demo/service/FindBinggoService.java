@@ -6,36 +6,68 @@ import java.util.Map;
 @Service
 public class FindBinggoService {
 
- public Map<String, Integer> findBinggoGame(Map<String, Integer> numberMap) throws Exception {
-	int[][] num = new int[3][3];    //이차원 배열선언
-	int i=0, j=0, totJump=0, cntJump=0;
+ public Map<String, Object> findBinggoGame(Map<String, Object> numberMap) throws Exception {
+	int[][] num1 = new int[3][3];    //이차원 배열선언
+	int[][] num2 = new int[3][3];    //이차원 배열선언
+	String[][] subStr = new String[3][3];
+	int i=0, j=0, k=0, totJump=0, cntJump=0;
 	int binggo1=0, binggo2=0, binggo3 = 0, Binggo=0;
 	System.out.println(numberMap);
-	num[0][0] = numberMap.get("num1");
-	num[0][1] = numberMap.get("num2");
-	num[0][2] = numberMap.get("num3");
-	num[1][0] = numberMap.get("num4");
-	num[1][1] = numberMap.get("num5");
-	num[1][2] = numberMap.get("num6");
-	num[2][0] = numberMap.get("num7");
-	num[2][1] = numberMap.get("num8");
-	num[2][2] = numberMap.get("num9");
+	Map<String, Object> paNum1 = (Map<String, Object>) numberMap.get("num1");
+	Map<String, Object> paNum2 = (Map<String, Object>) numberMap.get("num2");
+	System.out.println(num1);
+
+	subStr[0][0] = (String) paNum1.get("num1");
+	subStr[0][1] = (String) paNum1.get("num2");
+	subStr[0][2] = (String) paNum1.get("num3");
+	subStr[1][0] = (String) paNum1.get("num4");
+	subStr[1][1] = (String) paNum1.get("num5");
+	subStr[1][2] = (String) paNum1.get("num6");
+	subStr[2][0] = (String) paNum1.get("num7");
+	subStr[2][1] = (String) paNum1.get("num8");
+	subStr[2][2] = (String) paNum1.get("num9");
+
+	num1[0][0] = Integer.valueOf(subStr[0][0]);
+	num1[0][1] = Integer.valueOf(subStr[0][1]);
+	num1[0][2] = Integer.valueOf(subStr[0][2]);
+	num1[1][0] = Integer.valueOf(subStr[1][0]);
+	num1[1][1] = Integer.valueOf(subStr[1][1]);
+	num1[1][2] = Integer.valueOf(subStr[1][2]);
+	num1[2][0] = Integer.valueOf(subStr[2][0]);
+	num1[2][1] = Integer.valueOf(subStr[2][1]);
+	num1[2][2] = Integer.valueOf(subStr[2][2]);
+
+	 subStr[0][0] = (String) paNum2.get("num1");
+	 subStr[0][1] = (String) paNum2.get("num2");
+	 subStr[0][2] = (String) paNum2.get("num3");
+	 subStr[1][0] = (String) paNum2.get("num4");
+	 subStr[1][1] = (String) paNum2.get("num5");
+	 subStr[1][2] = (String) paNum2.get("num6");
+	 subStr[2][0] = (String) paNum2.get("num7");
+	 subStr[2][1] = (String) paNum2.get("num8");
+	 subStr[2][2] = (String) paNum2.get("num9");
+
+	 num2[0][0] = Integer.valueOf(subStr[0][0]);
+	 num2[0][1] = Integer.valueOf(subStr[0][1]);
+	 num2[0][2] = Integer.valueOf(subStr[0][2]);
+	 num2[1][0] = Integer.valueOf(subStr[1][0]);
+	 num2[1][1] = Integer.valueOf(subStr[1][1]);
+	 num2[1][2] = Integer.valueOf(subStr[1][2]);
+	 num2[2][0] = Integer.valueOf(subStr[2][0]);
+	 num2[2][1] = Integer.valueOf(subStr[2][1]);
+	 num2[2][2] = Integer.valueOf(subStr[2][2]);
 
 	for(i=0;i<3;i++) {
 		for(j=0;j<3;j++){
-			if(num[0][j]==1){
+			if(num1[i][j]==num2[i][j]){
 				binggo1++;
 			}
-			totJump+= num[i][j];
-		}
-		if(binggo1==3){
-			Binggo++;
 		}
 	}
-	 numberMap.put("totJump", totJump);
-	 numberMap.put("cntJump", i);
-	 numberMap.put("Binggo", Binggo);
-	 System.out.println(numberMap);
+
+	numberMap.put("cntJump", i);
+	numberMap.put("Binggo", binggo1);
+	System.out.println(numberMap);
 
 	return numberMap;
  }
