@@ -3,29 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add Numbers</title>
+<style>
+    div{
+        width:50px;
+        height:50px;
+        border:1px solid black;
+        display: inline-block;
+    }
+</style>
+<title>flag</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h4>Add Two Numbers</h4>
-<form id="addForm">
 
-<table id="tabId">
-<tr>
-<td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
-<td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
-</tr>
-<tr key="2">
-<td>1</td><td>2</td><td>1</td><td>3</td><td>2</td>
-<td>1</td><td>2</td><td>3</td><td>2</td><td>1</td>
-</tr>
-</table>
-
-<button type="button" onclick="fn_abc()">나의층수로</button>
-</form>
-<h2>뛰어넘은 돌의 수: <span id="result1"></span></h2>
-<h2>점프한 수: <span id="result2"></span></h2>
 <script>
+$(function(){
+    $("#tabId").hide();
+});
+
 function fn_abc() {
     var num = {
         num1: $("#tabId tr[key='2'] > td").eq(0).text(),
@@ -48,13 +43,62 @@ function fn_abc() {
         success: function(result) {
             $("#result1").text(result.totJump);
             $("#result2").text(result.cntJump);
+            $("#result3").text(result.jumStone);
+            fn_abc1();
+            //console.log(result.jumStone[0]);
+            //console.log(result.jumStone[1]);
         },
         error: function(error) {
             alert("Error: " + error.responseText);
         }
     });
 }
+
+function fn_abc1(){
+    var a = [];
+    a = $("#result3").text();
+    //console.log(a[0]);
+    //css에 변수로 넣기
+    for (var i=0;i<10;i++){
+        console.log(a[i]);
+        $("#divId"+a[i]).css("background-color","red");
+        i++;
+    }
+}
 </script>
+
+<h4>flag</h4>
+처음에 하나하고,<br>
+여러개를 동시에 하도록<br><br>
+<form id="addForm">
+    <table id="tabId">
+        <tr>
+            <td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
+            <td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
+        </tr>
+        <tr key="2">
+            <td>1</td><td>2</td><td>1</td><td>3</td><td>2</td>
+            <td>1</td><td>2</td><td>3</td><td>2</td><td>1</td>
+        </tr>
+    </table>
+
+    <button type="button" onclick="fn_abc()">점프하기</button>
+</form>
+<h2>점프한 수: <span id="result1"></span></h2>
+<h2>뛰어넘은 돌의 수: <span id="result2"></span></h2>
+<h2>첫번째 점프: <span id="result3"></span></h2>
+
+<div id="divId0"></div>
+<div id="divId1"></div>
+<div id="divId2"></div>
+<div id="divId3"></div>
+<div id="divId4"></div>
+<div id="divId5"></div>
+<div id="divId6"></div>
+<div id="divId7"></div>
+<div id="divId8"></div>
+<div id="divId9"></div>
+<div id="divId10"></div>
 </body>
 </html>
 

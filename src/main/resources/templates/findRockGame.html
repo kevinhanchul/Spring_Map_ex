@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add Numbers</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Numbers</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h4>Add Two Numbers</h4>
-<form id="addForm">
 
-나<input type="text" id="me_val">
-상대<input type="text" id="you_val">
-
-<button type="button" onclick="fn_abc()">나의층수로</button>
-</form>
-<h2>Result: <span id="result"></span></h2>
 <script>
+$(function(){
+    $("img").hide();
+});
+
 function fn_abc() {
     var num = {
-        num1: $("#me_val").val(),
-        num2: $("#you_val").val()
+        me: $("#meVal").val(),
+        com: $("#comVal").val()
     };
-	  
+    console.log(num);
     $.ajax({
         url: "/api/findRockGame",
         type: "POST",
@@ -36,6 +32,65 @@ function fn_abc() {
         }
     });
 }
+
+function fn_chgMe(){
+    var me = $("#meVal").val();
+    $("img").hide();
+    if (me=="바위"){
+        $("#rockImg").show();
+    }
+    if (me=="가위"){
+        $("#sissorImg").show();
+    }
+    if (me=="보"){
+        $("#paperImg").show();
+    }
+}
+
+function fn_chgCom(){
+    var com = $("#comVal").val();
+    $("img").hide();
+    if (com=="바위"){
+        $("#rockImg").show();
+    }
+    if (com=="가위"){
+        $("#sissorImg").show();
+    }
+    if (com=="보"){
+        $("#paperImg").show();
+    }
+}
+
 </script>
+
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+
+    <!--나<input type="text" id="me_val"><br>-->
+    나
+    <select id="meVal" onchange="fn_chgMe()">
+        <option></option>
+        <option value="가위">가위</option>
+        <option value="바위">바위</option>
+        <option value="보">보</option>
+    </select>
+    <br>
+    <!--상대<input type="text" id="you_val"><br>-->
+    상대
+    <select id="comVal" onchange="fn_chgCom()">
+        <option></option>
+        <option value="가위">가위</option>
+        <option value="바위">바위</option>
+        <option value="보">보</option>
+    </select>
+    <br>
+
+    <button type="button" onclick="fn_abc()">가위바위보</button>
+</form>
+<h4>Result: <span id="result"></span></h4>
+<!--이미지가 나오도록-->
+<img id="rockImg" src="http://localhost:8080/images/rock.jpg" />
+<img id="paperImg" src="http://localhost:8080/images/paper.jpg" />
+<img id="sissorImg" src="http://localhost:8080/images/sissor.jpg" />
 </body>
 </html>

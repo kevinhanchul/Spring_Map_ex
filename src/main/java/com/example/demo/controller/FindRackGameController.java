@@ -30,8 +30,11 @@ public class FindRackGameController {
 	 }
 	 
 	 @PostMapping("/findFlagGame")
-	 public Map<String, Integer> findFlagGame(@RequestBody Map<String, Integer> numbers) throws Exception {
-		 Map<String, Integer> result = findFlagService.findFlagGame(numbers);
+	 public Map<String, Object> findFlagGame(@RequestBody Map<String, Integer> numbers) throws Exception {
+
+		 Map<String, Object> result = findFlagService.findFlagGame(numbers);
+		 System.out.println("result : " + result);
+
 	 return result;
 	 }
 	 
