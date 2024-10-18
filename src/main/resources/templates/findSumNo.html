@@ -2,36 +2,25 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add Numbers</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Numbers</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
 table, tr, td{
 	border : 1px solid black;
 	border-collapse: collapse;
 }
+div{
+    width:50px;
+    height:50px;
+    border:1px solid black;
+    display:inline-block;
+}
 </style>
 </head>
 <body>
-<h4>Add Two Numbers</h4>
-<form id="addForm">
-<table id="tabId">
-<tr>
-<td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
-<td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
-</tr>
-<tr key="2">
-<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
-</tr>
-</table>
-<button type="button" onclick="fn_abc()">합산하기</button>
-<button type="button" onclick="fn_abc1()">새창띄우기</button>
-<button type="button" onclick="fn_abc2()">맵2개보내기</button>
-    <h1 th:text="${message}">Default message</h1>
-</form>
-<h2>Result: <span id="result"></span></h2>
+
 <script>
 var num = {
         num1: $("#tabId tr[key='2'] > td").eq(0).text(),
@@ -58,14 +47,14 @@ function fn_abc() {
         num9: $("#tabId tr[key='2'] > td").eq(8).text(),
         num10: $("#tabId tr[key='2'] > td").eq(9).text()
     };
-	  
+
     $.ajax({
         url: "/api/findSumNo",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),
         success: function(result) {
-            $("#result").text(result.sumNo);
+            $("#divId1").text(result.sumNo);
         },
         error: function(error) {
             alert("Error: " + error.responseText);
@@ -141,5 +130,28 @@ function fn_abc2(){
 }
 
 </script>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+    <table id="tabId">
+        <tr>
+            <td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
+            <td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
+        </tr>
+        <tr key="2">
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+            <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+        </tr>
+    </table>
+    <button type="button" onclick="fn_abc()">합산하기</button>
+    <button type="button" onclick="fn_abc1()">새창띄우기</button>
+    <button type="button" onclick="fn_abc2()">맵2개보내기</button>
+    <h4 th:text="${message}">Default message</h4>
+</form>
+<h4>Result: <span id="result"></span></h4>
+
+<div style="background-color:yellow" id="divId1"></div>
+<div style="background-color:blue">1</div>
+<div style="background-color:red">2</div>
+
 </body>
 </html>

@@ -10,25 +10,27 @@ table, tr, td{
 	border : 1px solid black;
 	border-collapse: collapse;
 }
+div {
+    display:inline-block;
+    display:none;
+}
 </style>
 </head>
-<body>
-<h4>check season</h4>
-<form id="addForm">
-월<input type="text" id="month"><br>
-<button type="button" onclick="fn_abc()">계절확인</button>
-</form>
-<h2>Result: <span id="result"></span></h2>
-<div>봄</div>
-<div>여름</div>
-<div>가을</div>
-<div>겨울</div>
 <script>
 function fn_abc() {
     var num = {
         month : $("#month").val()
     };
+    var month = $("#month").val();
     console.log(num);
+    if (month == ""){
+        alert("널은 안됨");
+        return 0;
+    }
+    if ((month < 1) || (month > 12)){
+        alert("1~12사이를 넣어 주세요.");
+        return 0;
+    }
     $.ajax({
         url: "/api/findSeason",
         type: "POST",
@@ -36,6 +38,23 @@ function fn_abc() {
         data: JSON.stringify(num),
         success: function(result) {
             $("#result").text(result.season);
+            console.log(result);
+            if (result.season == "봄"){
+                $("div").hide();
+                $("#divId1").show();
+            }
+            if (result.season == "여름"){
+                $("div").hide();
+                $("#divId2").show();
+            }
+            if (result.season == "가을"){
+                $("div").hide();
+                $("#divId3").show();
+            }
+            if (result.season == "겨울"){
+                $("div").hide();
+                $("#divId4").show();
+            }
             //if(result.season == ""){
             //    $("").css("","");
             //}
@@ -46,5 +65,19 @@ function fn_abc() {
     });
 }
 </script>
+
+<body>
+<h4>check season</h4>
+<form id="addForm">
+    월<input type="text" id="month"><br>
+    <button type="button" onclick="fn_abc()">계절확인</button>
+</form>
+
+<h2>Result: <span id="result"></span></h2>
+<div id="divId1"><img src="../images/sp.PNG"></div>
+<div id="divId2"><img src="../images/su.PNG"></div>
+<div id="divId3"><img src="../images/fa.PNG"></div>
+<div id="divId4"><img src="../images/wi.PNG"></div>
+
 </body>
 </html>
