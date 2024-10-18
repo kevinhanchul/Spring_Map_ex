@@ -13,12 +13,6 @@ public class FindOddNoController {
  @Autowired
  private CalculationService calculationService;
 
-    @PostMapping("/findSumNo")
-    public Map<String, Integer> findSumNo(@RequestBody Map<String, Integer> numbers) throws Exception {
-        Map<String, Integer> result = calculationService.findSumNo(numbers);
-        return result;
-    }
-
     @PostMapping("/findOddNo")
         public Map<String, Object> findOddNo(@RequestBody Map<String, Integer> numbers) throws Exception {
         return calculationService.findOddNo(numbers);
