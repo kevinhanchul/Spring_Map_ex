@@ -57,9 +57,14 @@ function fn_abc() {
         success: function(result) {
             //$("#result").text(result.scoreGrade);
             console.log(result);
-            <!--for(var i=0;i<30;i++){
-                result.num2[i]
-            }-->
+            //$("checkbox").eq(0).prop("checked", true);
+            $("input[type='checkbox']").eq(0).prop("checked", true);
+            var j=0;
+            for(var i=0;i<30;i++){
+                j = result.num2[i]-1;
+                //console.log(j);
+                $("input[type='checkbox']").eq(j).prop("checked", true);
+            }
         },
         error: function(error) {
             alert("Error: " + error.responseText);
