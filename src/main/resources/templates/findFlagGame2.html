@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+</style>
+<title>flag</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<script>
+$(function(){
+
+});
+
+function fn_abc() {
+    var num = {
+        num1: $("#divId1 > label").eq(0).text(),
+        num2: $("#divId1 > label").eq(1).text(),
+        num3: $("#divId1 > label").eq(2).text(),
+        num4: $("#divId1 > label").eq(3).text(),
+        num5: $("#divId1 > label").eq(4).text()
+    };
+	  
+    $.ajax({
+        url: "/api/findFlagGame2",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result1").text(result.totJump);
+            $("#result2").text(result.cntJump);
+            $("#result3").text(result.num[0]);
+            console.log(result);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+
+<h4>flag</h4>
+<form id="addForm">
+    <div id="divId1">
+        <label>1</label>
+        <label>3</label>
+        <label>2</label>
+        <label>4</label>
+        <label>2</label>
+    </div>
+    <button type="button" onclick="fn_abc()">점프하기</button>
+</form>
+<h5>점프한 수: <span id="result1"></span></h5>
+<h5>뛰어넘은 돌의 수: <span id="result2"></span></h5>
+<h5>첫번째 점프: <span id="result3"></span></h5>
+
+</body>
+</html>
+
