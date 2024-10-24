@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<script>
+$(function(){
+});
+
+function fn_abc() {
+    var num1 = {
+        num1: $("#tabId tr").eq(1).find("td").eq(0).text(),
+        num2: $("#tabId tr").eq(1).find("td").eq(1).text(),
+        num3: $("#tabId tr").eq(1).find("td").eq(2).text()
+    };
+    console.log(num1);
+    var num2 = {
+        num1: $("input[type='text']:nth-of-type(1)").val(),
+        num2: $("input[type='text']:nth-of-type(2)").val(),
+        num3: $("input[type='text']:nth-of-type(3)").val()
+    };
+    console.log(num2);
+    var dataToSend = {
+        num1: num1,
+        num2: num2
+    };
+    console.log(dataToSend);
+
+    $.ajax({
+        url: "/api/findBinggoGame2",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(dataToSend),
+        success: function(result) {
+<!--            $("#result1").text(result.totJump);-->
+            console.log(result.num3);
+            for(var i=0;i<3;i++){
+                if(result.num3[i]==1){
+                    $("input[type='checkbox']").eq(i).prop("checked", true);
+                }
+            }
+
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+
+
+<h4>빙고(그야말로빙고)</h4>
+<form id="addForm">
+
+    컴퓨터 숫자<br>
+    <table id="tabId">
+        <tr>
+            <td>숫자1</td>
+            <td>숫자2</td>
+            <td>숫자3</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" value="1">1</td>
+            <td><input type="checkbox" value="3">3</td>
+            <td><input type="checkbox" value="9">9</td>
+        </tr>
+    </table>
+    선택한숫자<br>
+    <input type="text" value="1">
+    <input type="text" value="4">
+    <input type="text" value="8">
+
+    <button type="button" onclick="fn_abc()">확인하기</button>
+</form>
+<h5>맞은 수: <span id="result1"></span></h5>
+<h5>빙고 수: <span id="result2"></span></h5>
+
+</body>
+</html>
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+<script>
+function fn_abc() {
+    var num = {
+        num1: $("div").eq(0).text(),
+        num2: $("div").eq(1).text(),
+        num3: $("div").eq(2).text(),
+        num4: $("div").eq(3).text(),
+        num5: $("div").eq(4).text(),
+        num6: $("div").eq(5).text(),
+        num7: $("div").eq(6).text(),
+        num8: $("div").eq(7).text(),
+        num9: $("div").eq(8).text(),
+        num10: $("div").eq(9).text(),
+        num11: $("div").eq(10).text(),
+        num12: $("div").eq(11).text(),
+        num13: $("div").eq(12).text(),
+        num14: $("div").eq(13).text(),
+        num15: $("div").eq(14).text(),
+        num16: $("div").eq(15).text(),
+        num17: $("div").eq(16).text(),
+        num18: $("div").eq(17).text(),
+        num19: $("div").eq(18).text(),
+        num20: $("div").eq(19).text(),
+        num21: $("div").eq(20).text(),
+        num22: $("div").eq(21).text(),
+        num23: $("div").eq(22).text(),
+        num24: $("div").eq(23).text(),
+        num25: $("div").eq(24).text(),
+        num26: $("div").eq(25).text(),
+        num27: $("div").eq(26).text(),
+        num28: $("div").eq(27).text(),
+        num29: $("div").eq(28).text(),
+        num30: $("div").eq(29).text()
+    };
+    console.log(num);
+    $.ajax({
+        url: "/api/play3692",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            //$("#result").text(result.scoreGrade);
+            console.log(result);
+            <!--for(var i=0;i<30;i++){
+                result.num2[i]
+            }-->
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+    <div><input type="checkbox" value="1">1</div>
+    <div><input type="checkbox" value="2">2</div>
+    <div><input type="checkbox" value="3">3</div>
+    <div><input type="checkbox" value="4">4</div>
+    <div><input type="checkbox" value="5">5</div>
+    <div><input type="checkbox" value="6">6</div>
+    <div><input type="checkbox" value="7">7</div>
+    <div><input type="checkbox" value="8">8</div>
+    <div><input type="checkbox" value="9">9</div>
+    <div><input type="checkbox" value="10">10</div>
+    <div><input type="checkbox" value="11">11</div>
+    <div><input type="checkbox" value="12">12</div>
+    <div><input type="checkbox" value="13">13</div>
+    <div><input type="checkbox" value="14">14</div>
+    <div><input type="checkbox" value="15">15</div>
+    <div><input type="checkbox" value="16">16</div>
+    <div><input type="checkbox" value="17">17</div>
+    <div><input type="checkbox" value="18">18</div>
+    <div><input type="checkbox" value="19">19</div>
+    <div><input type="checkbox" value="20">20</div>
+    <div><input type="checkbox" value="21">21</div>
+    <div><input type="checkbox" value="22">22</div>
+    <div><input type="checkbox" value="23">23</div>
+    <div><input type="checkbox" value="24">24</div>
+    <div><input type="checkbox" value="25">25</div>
+    <div><input type="checkbox" value="26">26</div>
+    <div><input type="checkbox" value="27">27</div>
+    <div><input type="checkbox" value="28">28</div>
+    <div><input type="checkbox" value="29">29</div>
+    <div><input type="checkbox" value="30">30</div>
+    <button type="button" onclick="fn_abc()">369확인</button><br>
+</form>
+<h4>Result: <span id="result"></span></h4>
+
+</body>
+</html>
