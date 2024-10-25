@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+
+</style>
+</head>
+<body>
+
+<script>
+function fn_abc() {
+    var a = [];
+    //이런경우는 그냥 파람을 배열로 넘기는 것이 나은거 같다
+    //이런 구조체 형식은 ArrayList->get->Integer로 전환이 가능하다.
+    $("input[type='checkbox']:checked").each(function(){
+        var b = $(this).attr("value");
+        a.push(b);
+    });
+    console.log(a);
+    var d = [];
+    for(var i=0;i<a.length;i++){
+        var c = a[i];
+        console.log(c);
+        console.log("c");
+        console.log($("input[type='text']").eq(0).val());
+        d.push($("input[type='text']").eq(c).val());
+    }
+    console.log(d);
+    var num = {
+        d:d
+    };
+	  
+    $.ajax({
+        url: "/api/findSumNo2",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.sumNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+    <div><input type="checkbox" value="0"><input type="text" value="5"></div>
+    <div><input type="checkbox" value="1"><input type="text" value="8"></div>
+    <div><input type="checkbox" value="2"><input type="text" value="4"></div>
+    <div><input type="checkbox" value="3"><input type="text" value="7"></div>
+    <div><input type="checkbox" value="4"><input type="text" value="3"></div>
+    <button type="button" onclick="fn_abc()">체크값더하기</button>
+</form>
+<h4>Result: <span id="result"></span></h4>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 
 package com.example.demo.controller;
 
-import com.example.demo.service.FindSumNo1Service;
+import com.example.demo.service.FindSumNo2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,21 +13,21 @@ import java.util.Map;
 
 @RestController
 //@RequestMapping("/api")
-public class FindSumNo1Controller {
+public class FindSumNo2Controller {
  @Autowired
- private FindSumNo1Service findSumNo1Service;
+ private FindSumNo2Service findSumNo2Service;
 
-    @GetMapping("/findSumNo1")
-    private ModelAndView findSumNo1() {
+    @GetMapping("/findSumNo2")
+    private ModelAndView findSumNo2() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("findSumNo1");
-        mav.addObject("message", "Hello, abc.html!");
+        mav.setViewName("findSumNo2");
         return mav;
     }
 
-    @PostMapping("/api/findSumNo1")
-    public Map<String, Integer> findSumNo1(@RequestBody Map<String, Integer> numbers) throws Exception {
-        return findSumNo1Service.findSumNo1(numbers);
+    @PostMapping("/api/findSumNo2")
+    public Map<String, Object> findSumNo2(@RequestBody Map<String, Object> numbers) throws Exception {
+        System.out.println(numbers);
+        return findSumNo2Service.findSumNo2(numbers);
     }
 
 }
