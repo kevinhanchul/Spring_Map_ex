@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+<script>
+function fn_abc() {
+    var val = {
+        stVal: $("#stVal").val()
+    };
+	  
+    $.ajax({
+        url: "/api/playBaseBall2",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(val),
+        success: function(result) {
+            console.log("정상");
+            $("#cntStrike").text(result.cntStrike);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+</script>
+
+<h5>BaseBall</h5>
+<select id="stVal">
+    <option value="strike">스트라이크</option>
+    <option value="ball">볼</option>
+    <option value="out">아웃</option>
+</select><br>
+<button type="button" onclick="fn_abc()">투구</button><br>
+스트라이크: <span id="cntStrike"></span><br>
+볼: <span id="cntBall"></span><br>
+아웃: <span id="cntOut"></span><br>
+회: <span id="cntUpDown"></span><br>
+초/말: <span id="cntCnt"></span><br>
+종료여부: <span id="cntEnd"></span><br>
+</body>
+</html>

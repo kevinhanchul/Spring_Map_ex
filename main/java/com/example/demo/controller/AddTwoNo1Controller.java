@@ -11,7 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class AddTwoNo1Controller {
     @Autowired
     private AddTwoNo1Service addTwoNo1Service;
-    
+
+    @GetMapping("/playBaseBall2")
+    private ModelAndView playBaseBall2() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("playBaseBall2");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+
     @GetMapping("/addTwoNo1")
     private ModelAndView addTwoNo1() {
         ModelAndView mav = new ModelAndView();

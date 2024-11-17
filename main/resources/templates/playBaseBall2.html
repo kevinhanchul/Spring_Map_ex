@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+table, tr, td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<script>
+
+function fn_abc() {
+    var num = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text()
+    };
+	  
+    $.ajax({
+        url: "/api/playBaseBall2",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.sumNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+
+</script>
+
+<h4>Add Two Numbers</h4>
+<h5>Result: <span id="result"></span></h5>
+</body>
+</html>
