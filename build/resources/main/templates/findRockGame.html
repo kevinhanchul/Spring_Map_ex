@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Numbers</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Numbers</title>
+<style>
+    <!--div의 위치를 픽스해야 한다.-->
+    div{
+        display:inline-block;
+        display:none;
+    }
+    img{
+        width:50px;
+        height:50px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 <script>
 $(function(){
-    $("img").hide();
+//    $("img").hide();
 });
 
 function fn_abc() {
@@ -35,28 +46,34 @@ function fn_abc() {
 
 function fn_chgMe(){
     var me = $("#meVal").val();
-    $("img").hide();
+    $(".me").hide();
     if (me=="바위"){
+        $("#divId1").show();
         $("#rockImg").show();
     }
     if (me=="가위"){
+        $("#divId1").show();
         $("#sissorImg").show();
     }
     if (me=="보"){
+        $("#divId1").show();
         $("#paperImg").show();
     }
 }
 
 function fn_chgCom(){
     var com = $("#comVal").val();
-    $("img").hide();
+    $(".com").hide();
     if (com=="바위"){
+        $("#divId2").show();
         $("#rockImg").show();
     }
     if (com=="가위"){
+        $("#divId2").show();
         $("#sissorImg").show();
     }
     if (com=="보"){
+        $("#divId2").show();
         $("#paperImg").show();
     }
 }
@@ -89,8 +106,15 @@ function fn_chgCom(){
 </form>
 <h4>Result: <span id="result"></span></h4>
 <!--이미지가 나오도록-->
-<img id="rockImg" src="http://localhost:8080/images/rock.jpg" />
-<img id="paperImg" src="http://localhost:8080/images/paper.jpg" />
-<img id="sissorImg" src="http://localhost:8080/images/sissor.jpg" />
+<div id="divId1">
+    <img class="me" id="rockImg" src="../images/rock.jpg" />
+    <img class="me" id="paperImg" src="../images/paper.jpg" />
+    <img class="me" id="sissorImg" src="../images/sissor.jpg" />
+</div>
+<div id="divId2">
+    <img class="com" id="rockImg" src="../images/rock.jpg" />
+    <img class="com" id="paperImg" src="../images/paper.jpg" />
+    <img class="com" id="sissorImg" src="../images/sissor.jpg" />
+</div>
 </body>
 </html>

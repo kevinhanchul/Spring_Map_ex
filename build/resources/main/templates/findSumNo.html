@@ -2,11 +2,11 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add Numbers</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Numbers</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
 table, tr, td{
 	border : 1px solid black;
 	border-collapse: collapse;
@@ -47,14 +47,14 @@ function fn_abc() {
         num9: $("#tabId tr[key='2'] > td").eq(8).text(),
         num10: $("#tabId tr[key='2'] > td").eq(9).text()
     };
-	  
+
     $.ajax({
         url: "/api/findSumNo",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),
         success: function(result) {
-            $("#result").text(result.sumNo);
+            $("#divId1").text(result.sumNo);
         },
         error: function(error) {
             alert("Error: " + error.responseText);
@@ -149,9 +149,9 @@ function fn_abc2(){
 </form>
 <h4>Result: <span id="result"></span></h4>
 
-<div style="background-color:yellow"></div>
-<div style="background-color:blue"></div>
-<div style="background-color:#0000FF"></div>
+<div style="background-color:yellow" id="divId1"></div>
+<div style="background-color:blue">1</div>
+<div style="background-color:red">2</div>
 
 </body>
 </html>

@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add Numbers</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Numbers</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
 table, tr, td{
 	border : 1px solid black;
 	border-collapse: collapse;
 }
+div{
+    width:50px;
+    height:50px;
+    border:1px solid black;
+    display:inline-block;
+}
 </style>
 </head>
 <body>
-<h4>Add Two Numbers</h4>
-<form id="addForm">
-<table id="tabId">
-<tr>
-<td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
-<td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
-</tr>
-<tr key="2">
-<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
-</tr>
-</table>
-<button type="button" onclick="fn_abc()">나의층수로</button>
-</form>
-<h2>Result: <span id="result"></span></h2>
+
 <script>
+var num = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
+    };
 function fn_abc() {
     var num = {
         num1: $("#tabId tr[key='2'] > td").eq(0).text(),
@@ -42,7 +47,7 @@ function fn_abc() {
         num9: $("#tabId tr[key='2'] > td").eq(8).text(),
         num10: $("#tabId tr[key='2'] > td").eq(9).text()
     };
-	  
+
     $.ajax({
         url: "/api/findSumNo",
         type: "POST",
@@ -56,6 +61,97 @@ function fn_abc() {
         }
     });
 }
+function fn_abc1() {
+
+    /*$.ajax({
+        url: "/api/findSumNo1",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(num),
+        success: function(result) {
+            $("#result").text(result.bigNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });*/
+
+    var link = 'http://localhost:8080/findSumNo1';
+    window.open(link, "PopupNew", "width=500,height=600");
+    //window.open("popup.html", "PopupNew", "width=500,height=600");
+    //https://blog.naver.com/deersoul6662/221805875601 => 새창 참고
+
+}
+
+function fn_abc2(){
+    var num1 = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
+    };
+
+    var num2 = {
+        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
+        num2: $("#tabId tr[key='2'] > td").eq(1).text(),
+        num3: $("#tabId tr[key='2'] > td").eq(2).text(),
+        num4: $("#tabId tr[key='2'] > td").eq(3).text(),
+        num5: $("#tabId tr[key='2'] > td").eq(4).text(),
+        num6: $("#tabId tr[key='2'] > td").eq(5).text(),
+        num7: $("#tabId tr[key='2'] > td").eq(6).text(),
+        num8: $("#tabId tr[key='2'] > td").eq(7).text(),
+        num9: $("#tabId tr[key='2'] > td").eq(8).text(),
+        num10: $("#tabId tr[key='2'] > td").eq(9).text()
+    };
+
+    var paramData = {
+        num1 : num1,
+        num2 : num2
+    }
+
+    $.ajax({
+        url: "/api/findSumNo2",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(paramData),
+        success: function(result) {
+            $("#result").text(result.sumNo);
+        },
+        error: function(error) {
+            alert("Error: " + error.responseText);
+        }
+    });
+}
+
 </script>
+<h4>Add Two Numbers</h4>
+<form id="addForm">
+    <table id="tabId">
+        <tr>
+            <td>숫자1</td><td>숫자2</td><td>숫자3</td><td>숫자4</td><td>숫자5</td>
+            <td>숫자6</td><td>숫자7</td><td>숫자8</td><td>숫자9</td><td>숫자10</td>
+        </tr>
+        <tr key="2">
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+            <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+        </tr>
+    </table>
+    <button type="button" onclick="fn_abc()">합산하기</button>
+    <button type="button" onclick="fn_abc1()">새창띄우기</button>
+    <button type="button" onclick="fn_abc2()">맵2개보내기</button>
+    <h4 th:text="${message}">Default message</h4>
+</form>
+<h4>Result: <span id="result"></span></h4>
+
+<div style="background-color:yellow"></div>
+<div style="background-color:blue"></div>
+<div style="background-color:red"></div>
+
 </body>
 </html>
