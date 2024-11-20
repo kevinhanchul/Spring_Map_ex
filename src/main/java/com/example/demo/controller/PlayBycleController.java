@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 @RestController
-//@RequestMapping("/api")
 public class PlayBycleController {
 	 @Autowired
 	 private PlayBycleService playBycleService;
