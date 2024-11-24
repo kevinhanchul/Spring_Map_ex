@@ -45,7 +45,7 @@ public class FindRackGameController {
 	 return result;
 	 }
 	 
-	 @PostMapping("/findBinggoGame")
+/*	 @PostMapping("/findBinggoGame")
 	 public Map<String, Object> findBinggoGame(@RequestBody Map<String, Object> data) throws Exception {
 		 // num1과 num2 각각을 추출
 		 Map<String, Object> num1 = (Map<String, Object>) data.get("num1");
@@ -56,7 +56,7 @@ public class FindRackGameController {
 		 Map<String, Object> result = findBinggoService.findBinggoGame(data);
 		 //return findBinggoService.findBinggoGame(num1);
 		 return result;
-	 }
+	 }*/
  
 }
 

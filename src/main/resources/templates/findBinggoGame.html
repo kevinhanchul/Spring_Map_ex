@@ -43,11 +43,23 @@ function fn_abc() {
         num2: num2
     };
 
+    var dataToSend2 = {
+        num1 : "1",
+        num2 : "2",
+        num3 : "3",
+        num4 : "4",
+        num5 : "5",
+        num6 : "6",
+        num7 : "7",
+        num8 : "8",
+        num9 : "9"
+    };
+
     $.ajax({
         url: "/api/findBinggoGame",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(dataToSend),
+        data: JSON.stringify(dataToSend2),
         success: function(result) {
             $("#result1").text(result.totJump);
             $("#result2").text(result.cntJump);
@@ -90,10 +102,10 @@ function fn_abc() {
     <input type="text" id="chNo8" value="9">
     <input type="text" id="chNo9" value="3"><br>
 
-    <button type="button" onclick="fn_abc()">나의층수로</button>
+    <button type="button" onclick="fn_abc()">확인</button>
 </form>
-<h2>뛰어넘은 판의 수: <span id="result1"></span></h2>
-<h2>주사위한 수: <span id="result2"></span></h2>
+<h4>뛰어넘은 판의 수: <span id="result1"></span></h4>
+<h4>주사위한 수: <span id="result2"></span></h4>
 
 </body>
 </html>

@@ -22,9 +22,12 @@ div{
 
 <script>
 function fn_abc() {
+
     var num = {
-        num1: $("#tabId tr[key='2'] > td").eq(0).text(),
-        num2: $("#tabId tr[key='2'] > td").eq(1).text()
+<!--        num1: $("#tabId tr[key='2'] > td").eq(0).text(),-->
+<!--        num2: $("#tabId tr[key='2'] > td").eq(1).text()-->
+        num1 : "1",
+        num2 : "2"
     };
 	  
     $.ajax({
@@ -63,7 +66,7 @@ function fn_abc() {
             <td>4</td>
         </tr>
     </table>
-    <button type="button" onclick="fn_abc()">비교하기</button>
+    <button type="button" onclick="fn_abc()">확인</button>
 </form>
 <h4>Result: <span id="result"></span></h4>
 <div></div>
