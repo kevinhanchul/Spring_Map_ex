@@ -7,42 +7,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h1>Add Two Numbers</h1>
-<form id="addForm">
-<table id="tabId">
-<tr>
-<td key="1">첫번째</td>
-<td>두번째</td>
-</tr>
-<tr key="2">
-<td>2111</td>
-<td>12111</td>
-<td>3111</td>
-<td>2111</td>
-<td>1111</td>
-</tr>
-</table>
-<button type="button" onclick="fn_abc()">나의층수로</button>
-</form>
-<h2>Result: <span id="result"></span></h2>
+
 <script>
 function fn_abc() {
- 	  event.preventDefault();
+ 	event.preventDefault();
     var num = {
-	      num1: $("#tabId tr[key='2'] > td").eq(0).text(),   	
-	      num2: $("#tabId tr[key='2'] > td").eq(1).text(),
-	      num3: $("#tabId tr[key='2'] > td").eq(2).text(),
-	      num4: $("#tabId tr[key='2'] > td").eq(3).text(),
-	      num5: $("#tabId tr[key='2'] > td").eq(4).text()
+	      num1 : "1",
+	      num2 : 2
     };
 	 
     $.ajax({
-        url: "/api/add",
+        url: "/api/add2",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(num),
         success: function(result) {
-            $("#result").html(result.sumNo+" "+result.cnt);
+            $("#result").html(result.sumNo);
         },
         error: function(error) {
             alert("Error: " + error.responseText);
@@ -50,5 +30,10 @@ function fn_abc() {
     });
 }
 </script>
+
+
+<button type="button" onclick="fn_abc()">더하기</button>
+<h2>Result: <span id="result"></span></h2>
+
 </body>
 </html>

@@ -8,12 +8,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class CalculationController {
- @Autowired
- private CalculationService calculationService;
- @PostMapping("/add")
- public Map<String, Integer> addNumbers(@RequestBody Map<String, Integer> numbers) throws Exception {
-	  Map<String, Integer> result = calculationService.add(numbers);
-     return result;
- }
- 
+    @Autowired
+    private CalculationService calculationService;
+    @PostMapping("/add")
+    public Map<String, Integer> addNumbers(@RequestBody Map<String, Integer> numbers) throws Exception {
+        //Map<String, Integer> result = calculationService.add(numbers);
+       return numbers;
+    }
+
 }
